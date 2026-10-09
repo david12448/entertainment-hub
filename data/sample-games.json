@@ -1,0 +1,137 @@
+{
+  "dataset": "ui-sample-not-live",
+  "verified_as_of": "2026-10-10",
+  "notice": "Sample landing-page links only. No official YouTube videos or endings have yet been verified or ingested.",
+  "games": [
+    {
+      "id": "astro-bot",
+      "name": "아스트로봇",
+      "english": "Astro Bot",
+      "aliases": [
+        "astrobot",
+        "아스트로 봇"
+      ],
+      "symbol": "🤖",
+      "platforms": [
+        "playstation"
+      ],
+      "genres": [
+        "platformer"
+      ],
+      "description": "PlayStation 게임 작품 정보와 제작 이야기를 찾는 시범 항목.",
+      "materials": [
+        {
+          "type": "official-info",
+          "title": "아스트로봇 공식 게임 소개",
+          "publisher": "PlayStation",
+          "url": "https://www.playstation.com/ko-kr/games/astro-bot/",
+          "spoiler": false
+        },
+        {
+          "type": "developer-diary",
+          "title": "게임 제작 비화 시리즈(공식 페이지 내 영상)",
+          "publisher": "PlayStation / Team ASOBI",
+          "url": "https://www.playstation.com/ko-kr/games/astro-bot/",
+          "spoiler": false
+        }
+      ]
+    },
+    {
+      "id": "pubg-battlegrounds",
+      "name": "PUBG: 배틀그라운드",
+      "english": "PUBG: BATTLEGROUNDS",
+      "aliases": [
+        "배그",
+        "배틀그라운드",
+        "pubg"
+      ],
+      "symbol": "🎯",
+      "platforms": [
+        "pc",
+        "playstation",
+        "other-console"
+      ],
+      "genres": [
+        "battle-royale"
+      ],
+      "description": "공식 게임 소개와 향후 업데이트·e스포츠 영상 분류를 준비 중입니다.",
+      "materials": [
+        {
+          "type": "official-info",
+          "title": "공식 게임 소개",
+          "publisher": "PUBG",
+          "url": "https://www.pubg.com/ko/game-info/overview",
+          "spoiler": false
+        }
+      ]
+    },
+    {
+      "id": "pac-man",
+      "name": "팩맨",
+      "english": "PAC-MAN",
+      "aliases": [
+        "팩 맨",
+        "pacman",
+        "오락실",
+        "아케이드"
+      ],
+      "symbol": "🟡",
+      "platforms": [
+        "arcade",
+        "other-console",
+        "pc"
+      ],
+      "genres": [
+        "arcade"
+      ],
+      "description": "오락실 고전 게임 및 공식 시리즈 역사·합법적 컬렉션 탐색.",
+      "materials": [
+        {
+          "type": "official-info",
+          "title": "PAC-MAN 공식 시리즈 게임 목록",
+          "publisher": "Bandai Namco Entertainment",
+          "url": "https://pacman.com/en/games/",
+          "spoiler": false
+        }
+      ]
+    },
+    {
+      "id": "starcraft",
+      "name": "스타크래프트",
+      "english": "StarCraft",
+      "aliases": [
+        "스타",
+        "star craft",
+        "스타크래프트 리마스터"
+      ],
+      "symbol": "🌌",
+      "platforms": [
+        "pc"
+      ],
+      "genres": [
+        "rts"
+      ],
+      "description": "스타크래프트 리마스터·공식 e스포츠·개발 정보 연결 준비 중입니다.",
+      "materials": []
+    },
+    {
+      "id": "league-of-legends",
+      "name": "리그 오브 레전드",
+      "english": "League of Legends",
+      "aliases": [
+        "롤",
+        "lol",
+        "league"
+      ],
+      "symbol": "🏆",
+      "platforms": [
+        "pc"
+      ],
+      "genres": [
+        "moba"
+      ],
+      "description": "공식 업데이트·챔피언 소개·e스포츠 영상 연결 준비 중입니다.",
+      "materials": []
+    }
+  ]
+}

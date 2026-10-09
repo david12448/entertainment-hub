@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="음악, 영화, 드라마, 애니와 게임을 연결하는 엔터테인먼트 검색. 게임 공식 정보의 초기 탐색 화면입니다.">
+  <title>Entertainment Hub | 게임 탐색</title>
+  <link rel="stylesheet" href="./assets/site.css">
+  <script src="./assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+<header class="site-header">
+  <a class="brand" href="./index.html" aria-label="Entertainment Hub 홈"><span class="brand-icon">✦</span><span>Entertainment <em>Hub</em></span></a>
+  <span class="edition">미리보기 · 시범 데이터</span>
+</header>
+<main id="main" class="container">
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="eyebrow">ENTERTAINMENT / GAMES</div>
+    <h1 id="hero-heading">좋아하는 게임의<br><span>모든 이야기를 한곳에서</span></h1>
+    <p>오락실·레트로 게임부터 PlayStation, PC 게임까지. 작품을 찾고 공식 영상, 제작 이야기, 업데이트 및 관련 콘텐츠를 살펴보세요.</p>
+    <div class="scope">현재는 게임 분류·검색을 검증하는 초기 화면입니다. 공식 엔딩·공략 영상은 검증 후 순차적으로 연결됩니다.</div>
+  </section>
+  <nav class="sections" aria-label="엔터테인먼트 영역">
+    <span class="section-active" aria-current="page">🎮 게임</span>
+    <span>🎵 음악 <small>준비 중</small></span>
+    <span>🎬 영화 <small>준비 중</small></span>
+    <span>📺 드라마 <small>준비 중</small></span>
+    <span>✨ 애니 <small>준비 중</small></span>
+  </nav>
+  <section class="search-area" aria-labelledby="search-heading">
+    <h2 id="search-heading">게임 찾아보기</h2>
+    <label class="searchbox">
+      <span class="sr-only">게임 제목 검색</span>
+      <span aria-hidden="true">⌕</span>
+      <input type="search" id="query" placeholder="스타크래프트, 롤, 배틀그라운드, 팩맨..." autocomplete="off">
+    </label>
+    <div class="filters">
+      <label>플랫폼
+        <select id="platform"><option value="all">전체 플랫폼</option><option value="arcade">오락실·레트로</option><option value="playstation">PlayStation</option><option value="pc">PC</option><option value="mobile">모바일</option><option value="other-console">그 외 콘솔</option></select>
+      </label>
+      <label>장르
+        <select id="genre"><option value="all">전체 장르</option><option value="arcade">아케이드</option><option value="platformer">플랫포머</option><option value="rts">RTS</option><option value="moba">MOBA</option><option value="battle-royale">배틀로얄</option></select>
+      </label>
+      <label>콘텐츠
+        <select id="content"><option value="all">모든 콘텐츠</option><option value="official-info">공식 게임 정보</option><option value="developer-diary">제작사 이야기</option><option value="official-trailer">공식 트레일러</option><option value="official-ending">엔딩 (스포일러)</option><option value="esports">e스포츠</option></select>
+      </label>
+    </div>
+  </section>
+  <section class="results" aria-labelledby="results-heading">
+    <div class="results-heading"><h2 id="results-heading">게임 목록</h2><span id="count" role="status" aria-live="polite">불러오는 중</span></div>
+    <div id="results" class="cards" aria-live="polite"></div>
+    <p class="footer-note">공식 영상은 확인된 제작사·플랫폼 출처만 연결합니다. 팬 영상과 원작자 공식 영상은 구분하고, 엔딩에는 스포일러 보호를 적용합니다. 게임 파일(ROM/BIOS)은 제공하지 않습니다.</p>
+  </section>
+</main>
+<footer><div class="container">Entertainment Hub · 분류 및 검색 시제품 · <a href="./docs/SITE_GUIDE.md">데이터 안내</a></div></footer>
+</body>
+</html>
