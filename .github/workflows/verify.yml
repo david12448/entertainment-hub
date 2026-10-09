@@ -1,0 +1,24 @@
+name: Verify public entertainment demo
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check sample catalog
+        run: python -m unittest discover -s tests -v
+      - name: Verify no private pipeline is packaged
+        run: |
+          test ! -d internal
+          test ! -d collectors
+          test ! -d pipeline
+          test -f index.html
+          test -f assets/app.js
+          test -f data/sample-games.json
