@@ -18,6 +18,7 @@ const label = {
   "official-ending": "공식 엔딩",
   esports: "e스포츠",
 };
+const urlParameters = new URLSearchParams(window.location.search);
 let games = [];
 let opened = new Set();
 let revealed = new Set();
@@ -98,6 +99,11 @@ function render() {
     const chips = node("div", "chips");
     [...game.platforms, ...game.genres].slice(0, 4).forEach(p => chips.append(node("span", "chip", label[p] || p)));
     card.append(chips);
+    if (typeof game.detail_path === "string" && /^games\/[a-z0-9]+(?:-[a-z0-9]+)*\/$/.test(game.detail_path)) {
+      const link = node("a", "detail-link", "고정 주소로 상세 보기 ↗");
+      link.href = "./" + game.detail_path;
+      card.append(link);
+    }
     const button = node("button", "expand", opened.has(game.id) ? "상세 정보 접기 ↑" : "작품 상세·공식 자료 보기 ↓");
     button.type = "button";
     button.setAttribute("aria-expanded", String(opened.has(game.id)));
@@ -120,6 +126,19 @@ async function init() {
     const payload = await res.json();
     if (!Array.isArray(payload.games)) throw new Error("invalid game catalog");
     games = payload.games;
+    // Preserve historical root/query URLs. Do not silently redirect iframe or shared links.
+    // These optional query parameters enhance discovery; the path itself stays valid.
+    const oldGameKey = urlParameters.get("game") || urlParameters.get("slug") || urlParameters.get("id");
+    if (oldGameKey) {
+      const match = games.find(g => [g.id, g.name, g.english, ...(g.aliases || [])]
+        .some(key => String(key).toLocaleLowerCase() === oldGameKey.toLocaleLowerCase()));
+      if (match) {
+        els.query.value = match.name;
+        opened.add(match.id);
+      }
+    } else if (urlParameters.get("q")) {
+      els.query.value = urlParameters.get("q").slice(0, 200);
+    }
     [els.query, els.platform, els.genre, els.content].forEach(el => el.addEventListener("input", render));
     render();
   } catch (err) {

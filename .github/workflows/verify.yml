@@ -22,3 +22,8 @@ jobs:
           test -f index.html
           test -f assets/app.js
           test -f data/sample-games.json
+
+      - name: Verify public JavaScript syntax
+        run: node --check assets/app.js
+      - name: Build non-indexable GitHub Pages pilot (no deploy)
+        run: python scripts/build_site.py --output "$RUNNER_TEMP/entertainment-preview"
