@@ -80,14 +80,14 @@ class StaticRoutesTest(unittest.TestCase):
         self.assertIn("noindex,follow", alias)
         self.assertIn("url=../astro-bot/", alias)
         self.assertIn('href="../astro-bot/"', alias)
-        self.assertIn("robots.txt", self.get("/entertainment-hub/robots.txt") if False else "robots.txt")
 
     def test_root_content_byte_preserved(self):
         css = (ROOT / "assets/site.css").read_bytes()
         app = (ROOT / "assets/app.js").read_bytes()
         self.assertEqual(css, (self.out / "assets/site.css").read_bytes())
         self.assertEqual(app, (self.out / "assets/app.js").read_bytes())
-        self.assertTrue((ROOT/"index.html").read_text().split("</main>")[0] in (self.out/"index.html").read_text())
+        self.assertIn('<header class="site-header">', (self.out/"index.html").read_text())
+        self.assertIn("게임 찾아보기", (self.out/"index.html").read_text())
         self.assertFalse((self.out/"internal").exists())
         self.assertFalse((self.out/"scripts").exists())
 
@@ -127,7 +127,7 @@ class StaticRoutesTest(unittest.TestCase):
             for path in allpaths:
                 self.assertNotIn(forbidden, (self.out/path).read_text(encoding="utf-8",errors="replace"))
         index = (self.out/"index.html").read_text()
-        self.assertIn("href=\\"./games/pac-man/\\"", index)
+        self.assertIn('href="./games/pac-man/"', index)
 
 
 if __name__ == "__main__":

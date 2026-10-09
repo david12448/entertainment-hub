@@ -95,7 +95,8 @@ def build(output: Path, origin: str | None, base: str, indexable: bool) -> dict:
     output = output.resolve()
     if output.exists():
         raise ValueError("Output directory must not already exist (prevent overwrites)")
-    if output == ROOT or output in (ROOT / "assets", ROOT / "data", ROOT / "docs"):
+    if (output == ROOT or any(output == area or area in output.parents
+         for area in (ROOT / "assets", ROOT / "data", ROOT / "docs", ROOT / ".github"))):
         raise ValueError("Unsafe output path")
     sample_path = ROOT / "data/sample-games.json"
     catalog = json.loads(sample_path.read_text(encoding="utf-8"))
@@ -126,12 +127,14 @@ def build(output: Path, origin: str | None, base: str, indexable: bool) -> dict:
     homepage = homepage.replace("</main>", directory + "</main>", 1)
     (output / "index.html").write_text(homepage, encoding="utf-8")
 
+    game_links = "".join(f'<li><a href="./{h(g["slug"])}/">{h(g["name"])}<small>{h(g["english"])}</small></a></li>' for g in pages)
+    game_directory = '<section class="directory"><h2>검증된 게임 페이지</h2><ul>' + game_links + '</ul></section>'
     game_index = ('<header class="site-header"><a class="brand" href="../">✦ Entertainment Hub</a>'
                   '<span class="edition">게임별 공식 자료 탐색</span></header><main class="container">'
                   '<nav class="route-breadcrumb"><a href="../">홈</a> / 게임</nav>'
                   '<div class="route-intro"><h1>게임별 작품 가이드</h1>'
                   '<p>검증된 공식 게임 정보가 있는 작품부터 개별 문서를 공개합니다. 플랫폼·장르 검색은 홈에서 이용하세요.</p></div>'
-                  + directory + '</main>')
+                  + game_directory + '</main>')
     game_page = document("게임 작품별 가이드", "검증된 공식 게임 자료와 작품별 안내를 살펴보세요.", "games/", origin, base, indexable, game_index, "../assets/site.css")
     target = output / "games"
     target.mkdir()
