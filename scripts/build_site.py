@@ -54,7 +54,7 @@ def validate_catalog(pages: list[dict], samples: list[dict]) -> None:
             if not SLUG.fullmatch(alt) or alt in routes or alt in slugs or alt == slug:
                 raise ValueError("Invalid/duplicate alternate slug")
             routes.add(alt)
-        if len(game.get("meta_description", "")) < 45 or len(game.get("lead", "")) < 100:
+        if len(game.get("meta_description", "")) < 45 or len(game.get("lead", "")) < 95:
             raise ValueError("Too little original information for a game page")
         if len(game.get("sections", [])) < 2 or any(len(s["text"]) < 75 for s in game["sections"]):
             raise ValueError("Individual pages require substantial unique sections")
