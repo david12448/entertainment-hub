@@ -1,0 +1,6 @@
+{
+  "site_origin": null,
+  "base_path": "/entertainment-hub/",
+  "indexable": false,
+  "description": "Default is a non-indexable pilot. Set an approved origin and indexable flag during deploy only."
+}
